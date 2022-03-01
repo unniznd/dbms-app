@@ -17,7 +17,7 @@ Makemigrations and migrate by
 
 ```
 python manage.py makemigrations
-pyton manage.py migrate
+python manage.py migrate
 ```
 
 
@@ -25,3 +25,6 @@ Start Server by
 
 ```
 python manage.py runserver
+
+```
+

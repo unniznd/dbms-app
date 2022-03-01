@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <a href="{%url 'p-add' %}">New</a><br>
+    {%for patient in patients%}
+    <a href="{%url 'p-update' pk=patient.pk %}">
+        {{patient.pId }} - {{patient.pName}}
+    </a>
+    
+    <br>
+    {%endfor%}
+{% endblock content %}

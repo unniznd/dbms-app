@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <a href="{%url 'v' %}">Vehicle</a><br>  
+    <a href="{%url 'n' %}">Nurse</a><br>  
+    <a href="{%url 'vo' %}">Volunteer</a><br>  
+    <a href="{%url 'p' %}">Patient</a><br><br>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="date" name="date"/>
+        <input type="submit" value="Go"/>
+    </form>
+
+    {% if vehicle %}
+    <h1>Vehicles</h1>
+        {% for v in vehicle %}
+            <h2>{{v.vNum}} - {{v.vName}}</h2>
+            {% for n in nurse %}
+                {% if v.vNum == n.vNum.vNum %}
+                    <h3>Nurses</h3>
+                    {{n.nId}} - {{n.nName}}<br>
+                    {% for p in patient %}
+                        {% if n.nId == p.nId.nId %}
+                           <h4>Patients</h4> 
+                            {{p.pId}} - {{p.pName}}<br>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {%endfor%}
+            <br>
+            {% for vo in volunteer %}
+                {% if v.vNum == vo.vNum.vNum %}
+                    <h3>Volunteer</h3>
+                    {{vo.vId}} = {{vo.vName}}<br>
+                {% endif %}
+            {%endfor%}
+        {%endfor%}
+    {% endif %}
+
+{% endblock content %}

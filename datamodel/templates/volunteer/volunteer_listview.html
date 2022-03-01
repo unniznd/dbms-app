@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<a href="{%url 'vo-add' %}">New</a><br>
+    {%for volunteer in volunteers%}
+    <a href="{%url 'vo-update' pk=volunteer.pk %}">
+        {{volunteer.vId }} - {{volunteer.vName}}
+    </a>
+    
+    <br>
+    {%endfor%}
+{% endblock content %}
